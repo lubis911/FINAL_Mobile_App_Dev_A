@@ -25,18 +25,6 @@ export default function CarWashScreen() {
     const [showPaymentModal, setShowPaymentModal] = useState(false);
     const [selectedVehicle, setSelectedVehicle] = useState(0);
     const [showWaitingPayment, setShowWaitingPayment] = useState(false);
-    const [showSuccessTicket, setShowSuccessTicket] = useState(false);
-
-  useEffect(() => {
-    if (showWaitingPayment) {
-      const timer = setTimeout(() => {
-        setShowWaitingPayment(false);
-        setShowSuccessTicket(true);
-      }, 2000); // 2 detik
-      return () => clearTimeout(timer);
-    }
-  }, [showWaitingPayment]);
-
 
   return (
     <View style={styles.container}>
@@ -337,7 +325,6 @@ export default function CarWashScreen() {
         { label: 'Virtual BCA', Icon: BCA, onPress: () => {
             setShowPaymentModal(false);
             setShowWaitingPayment(true);
-            setShowSuccessTicket(true);
           } 
         },
         { label: 'Virtual BRI', Icon: BRI },
@@ -380,115 +367,6 @@ export default function CarWashScreen() {
     </TouchableOpacity>
   </View>
 </Modal>
-
-{/* Modal Overlay Payment Success / Ticket */}
-<Modal
-  visible={showSuccessTicket}
-  animationType="slide"
-  transparent
-  onRequestClose={() => setShowSuccessTicket(false)}
->
-  <View style={{
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.35)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }}>
-    <View style={{
-      width: 350,
-      backgroundColor: 'white',
-      borderRadius: 20,
-      padding: 24,
-      alignItems: 'center',
-      position: 'relative',
-    }}>
-      <Text style={{
-        fontSize: 28,
-        fontWeight: '700',
-        color: 'black',
-        fontFamily: 'Century Gothic',
-        marginBottom: 12,
-        textAlign: 'center',
-      }}>
-        Payment successfully
-      </Text>
-      <Text style={{
-        fontSize: 10,
-        color: 'black',
-        fontFamily: 'Inter',
-        fontWeight: '400',
-        marginBottom: 16,
-        textAlign: 'center',
-      }}>
-        Thank you for keeping us as your trusted partner, please show this ticket to the officer and we will be ready to serve you.{"\n\n"}
-        Do not give this ticket to anyone to avoid fraud and policy violations.
-      </Text>
-      {/* Tiket Card */}
-      <View style={{
-        width: 292,
-        backgroundColor: '#FBFBFB',
-        borderRadius: 20,
-        borderWidth: 1,
-        borderColor: '#575757',
-        padding: 16,
-        marginBottom: 24,
-      }}>
-        {/* Baris 1 */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 }}>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>Ms. Yanti</Text>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>Medium car</Text>
-        </View>
-        {/* Baris 2 */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 }}>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>mon, 30 Oct 2024</Text>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>180581085108</Text>
-        </View>
-        {/* Baris 3 */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 }}>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>Full Detailing</Text>
-          <Text style={{ fontSize: 10, color: 'white', backgroundColor: '#6BA58C', borderRadius: 8, paddingHorizontal: 8 }}>Paid</Text>
-        </View>
-        {/* Info lainnya */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 }}>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>Start on</Text>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>: 07:00 PM</Text>
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 }}>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>Seat number</Text>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>: 11</Text>
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 }}>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>Discount</Text>
-          <Text style={{ fontSize: 10, color: 'black', fontFamily: 'Inter' }}>: none</Text>
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 8 }}>
-          <Text style={{ fontSize: 15, color: '#575757', fontFamily: 'Inter', fontWeight: '700' }}>Total</Text>
-          <Text style={{ fontSize: 15, color: '#575757', fontFamily: 'Inter', fontWeight: '700' }}>: Rp. 250.000</Text>
-        </View>
-      </View>
-      {/* Tombol Close */}
-      <TouchableOpacity
-        style={{
-          width: 102,
-          height: 42,
-          backgroundColor: '#FFA31A',
-          borderRadius: 20,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        onPress={() => setShowSuccessTicket(false)}
-      >
-        <Text style={{
-          color: 'white',
-          fontSize: 18,
-          fontWeight: '700',
-          fontFamily: 'Century Gothic',
-        }}>Close</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-</Modal>
-
 
 
       {/* Bottom Navigation */}
