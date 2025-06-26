@@ -1,29 +1,35 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Header, TextInput} from '../../components/molecules';
-import {Button, Gap} from '../../components/atoms';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import TextInput from '../../components/molecules/TextInput';
+import Button from '../../components/atoms/Button';
 
 const SignIn = () => {
   return (
-    <View style={styles.pageContainer}>
-      <Header text="Sign In" />
-      <View style={styles.contentContainer}>
-        <Gap height={26} />
-        <TextInput
-          text="Email Address"
-          placeholder="Enter your email address"
-        />
-        <Gap height={16} />
-        <TextInput text="Password" placeholder="Enter your password" />
-        <Gap height={24} />
-        <Button text="Sign In" />
-        <Gap height={12} />
-        <Button
-          text="Create New Account"
-          color="#8D92A3"
-          buttonColor="#FFFFFF"
-        />
+    <View style={styles.container}>
+      <Text style={styles.title}>Car wash</Text>
+
+      <TextInput placeholder="Enter Email" />
+      <TextInput placeholder="Password" secureTextEntry />
+
+      <Button label="Login" onPress={() => {}} />
+
+      <TouchableOpacity>
+        <Text style={styles.link}>Sign Up</Text>
+      </TouchableOpacity>
+
+      <View style={styles.separatorContainer}>
+        <View style={styles.line} />
+        <Text style={styles.separatorText}>Or quick access with</Text>
+        <View style={styles.line} />
       </View>
+
+      <TouchableOpacity style={styles.googleButton}>
+        <Image
+          source={require('../../assets/google.png')}
+          style={styles.googleIcon}
+        />
+        <Text style={styles.googleText}>Login with Google</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -31,12 +37,52 @@ const SignIn = () => {
 export default SignIn;
 
 const styles = StyleSheet.create({
-  pageContainer: {
+  container: {
     flex: 1,
+    backgroundColor: '#F9B233',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
   },
-  contentContainer: {
+  title: {
+    fontSize: 28,
+    fontFamily: 'cursive',
+    marginBottom: 30,
+    color: '#000',
+  },
+  link: {
+    color: '#000',
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
+  separatorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  line: {
     flex: 1,
-    marginTop: 24,
-    marginHorizontal: 24,
+    height: 1,
+    backgroundColor: '#999',
+  },
+  separatorText: {
+    marginHorizontal: 10,
+    color: '#555',
+  },
+  googleButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 8,
+  },
+  googleIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+  },
+  googleText: {
+    color: '#000',
   },
 });

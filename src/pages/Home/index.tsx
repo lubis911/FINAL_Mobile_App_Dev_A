@@ -1,126 +1,158 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
-import DummyPhoto from '../../assets/dummyPhoto.png';
-import {Button} from '../../components/atoms';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 
-const Home = () => {
+export default function Home() {
   return (
-    <View style={styles.pageContainer}>
-      {/* Header Section */}
-      <View style={styles.headerRow}>
-        <View style={{flex: 1}}>
-          <Text style={styles.greeting}>Hi, John Doe</Text>
-          <Text style={styles.subtitle}>Have you track your money today?</Text>
-        </View>
-        <Image source={DummyPhoto} style={styles.profileImage} />
+    <ScrollView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.logo}>Car wash</Text>
+        <TouchableOpacity style={styles.loginBtn}>
+          <Text style={styles.loginText}>Login</Text>
+        </TouchableOpacity>
       </View>
 
-      {/* Spacer */}
-      <View style={{height: 16}} />
+      {/* Hero Section */}
+      <View style={styles.heroTextSection}>
+        <Text style={styles.heroTitle}>
+          <Text style={styles.shine}>Shine</Text>
+          <Text style={styles.hub}>Hub</Text> Car &amp; Motorcycle Wash
+        </Text>
+        <Text style={styles.heroDesc}>
+          Enjoy the sensation of a spotless, shiny car—top-quality care for your
+          vehicle every time.
+        </Text>
 
-      {/* Balance Section */}
-      <View style={styles.sectionBox}>
-        <Text style={styles.sectionTitle}>Your Balance</Text>
-        <Text style={styles.balance}>Rp. 10.000.000</Text>
-        <View style={styles.fullDivider} />
-        <View style={styles.rowBetween}>
-          <Text style={styles.label}>Cash on Hand</Text>
-          <Text style={styles.value}>Rp. 4.000.000</Text>
-        </View>
-        <View style={styles.rowBetween}>
-          <Text style={styles.label}>Cash on Bank</Text>
-          <Text style={styles.value}>Rp. 6.000.000</Text>
-        </View>
+        <TouchableOpacity style={styles.learnMoreBtn}>
+          <Text style={styles.learnMoreText}>Learn More →</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.bookingBtn}>
+          <Text style={styles.bookingText}>BOOKING NOW</Text>
+        </TouchableOpacity>
       </View>
 
-      {/* Spacer */}
-      <View style={{height: 16}} />
-
-      {/* Add Transaction Section */}
-      <View style={styles.sectionBox}>
-        <Text style={styles.sectionTitle}>Add Transaction</Text>
-        <View style={{height: 16}} />
-        <Button text="Cash On Hand" color="#02CF8E" buttonColor="#000" />
-        <View style={{height: 16}} />
-        <Button text="Cash On Bank" color="#02CF8E" buttonColor="#000" />
-        <View style={{height: 8}} />
+      {/* Hero Image */}
+      <View style={styles.imageSection}>
+        <Image
+          source={require('../../assets/car.png')}
+          style={styles.carImage}
+          resizeMode="contain"
+        />
+        <Image
+          source={require('../../assets/bike.png')}
+          style={styles.bikeImage}
+          resizeMode="contain"
+        />
       </View>
-    </View>
+
+      {/* Taglines */}
+      <View style={styles.taglineSection}>
+        <Text style={styles.tagline}>More Than a Wash, It's Full Care!</Text>
+        <Text style={styles.tagline}>Maximum Clean, Total Shine!</Text>
+        <Text style={styles.tagline}>Quick Service, Gleaming Vehicles!</Text>
+      </View>
+    </ScrollView>
   );
-};
-
-export default Home;
+}
 
 const styles = StyleSheet.create({
-  pageContainer: {
+  container: {
     flex: 1,
-    backgroundColor: '#FAFAFC',
-    padding: 16,
-  },
-  headerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 0,
-  },
-  greeting: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#000',
-    fontFamily: 'Poppins-Bold',
-    marginBottom: 2,
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#A3A3A3',
-    fontFamily: 'Poppins-Regular',
-  },
-  profileImage: {
-    width: 48,
-    height: 48,
-    borderRadius: 12,
-    resizeMode: 'cover',
-  },
-  sectionBox: {
     backgroundColor: '#fff',
-    borderRadius: 12,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    marginBottom: 0,
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000',
-    fontFamily: 'Poppins-Bold',
-    marginBottom: 8,
-  },
-  balance: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#000',
-    fontFamily: 'Poppins-Bold',
-    textAlign: 'center',
-    marginBottom: 8,
-  },
-  fullDivider: {
-    borderBottomWidth: 1.5,
-    borderBottomColor: '#222',
-    marginVertical: 10,
-  },
-  rowBetween: {
+  header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginVertical: 6,
+    paddingHorizontal: 20,
+    paddingTop: 40,
+    backgroundColor: '#000',
   },
-  label: {
-    fontSize: 16,
-    color: '#000',
-    fontFamily: 'Poppins-Regular',
+  logo: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
-  value: {
-    fontSize: 16,
+  loginBtn: {
+    backgroundColor: '#FFA500',
+    borderRadius: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 6,
+  },
+  loginText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  heroTextSection: {
+    padding: 20,
+    backgroundColor: '#000',
+  },
+  heroTitle: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  shine: {
+    color: '#fff',
+  },
+  hub: {
+    color: '#FFA500',
+  },
+  heroDesc: {
+    color: '#ddd',
+    marginTop: 10,
+  },
+  learnMoreBtn: {
+    backgroundColor: '#ccc',
+    marginTop: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  learnMoreText: {
     color: '#000',
-    fontFamily: 'Poppins-Regular',
+  },
+  bookingBtn: {
+    backgroundColor: '#FFA500',
+    marginTop: 10,
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  bookingText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  imageSection: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 10,
+    backgroundColor: '#fff',
+    paddingVertical: 20,
+  },
+  carImage: {
+    width: 180,
+    height: 100,
+  },
+  bikeImage: {
+    width: 120,
+    height: 100,
+  },
+  taglineSection: {
+    alignItems: 'center',
+    padding: 20,
+  },
+  tagline: {
+    fontStyle: 'italic',
+    marginVertical: 4,
+    textAlign: 'center',
   },
 });

@@ -1,11 +1,12 @@
 import React from 'react';
-import SplashScreen from './src/pages/SplashScreen';
-import SignIn from './src/pages/SignIn';
-import SignUp from './src/pages/SignUp';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import Home from './src/pages/Home';
+import SignIn from './src/pages/SignIn';
+import SignOut from './src/pages/SignUp';
+import Homepage from './src/pages/Homepage';
 
 const App = () => {
-  return <Home />;
+  return <Homepage />;
 };
 
 export default App;
